@@ -51,6 +51,17 @@ body::before {
   min-height:1.2em; text-align:center;
 }
 
+.subgreeting {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: #b87a62;
+  text-align: center;
+  min-height: 1.4em;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.subgreeting.visible { opacity: 1; }
+
 .cursor {
   display:inline-block; width:3px; height:.82em;
   background:#c4735a; margin-left:3px; vertical-align:middle;
@@ -241,6 +252,7 @@ body::before {
 
 <div class="scene">
   <div class="greeting" id="greeting"><span class="cursor"></span></div>
+  <div class="subgreeting" id="subgreeting"></div>
 
   <div class="env-wrap" id="envWrap">
     <div class="envelope" id="envelope" onclick="openEnvelope()">
@@ -250,7 +262,7 @@ body::before {
       <div class="env-flap" id="flap"></div>
       <div class="env-seal" id="seal">&#10084;</div>
     </div>
-    <div class="open-label" id="openLabel">Open me 💌</div>
+    <div class="open-label" id="openLabel">Open me</div>
   </div>
 </div>
 
@@ -389,7 +401,13 @@ function closeEnvelope() {
 // greeting
 setTimeout(() => {
   typeText(document.getElementById('greeting'), 'Hi Jae ♡', 90, () => {
-    setTimeout(() => document.getElementById('envWrap').classList.add('visible'), 380);
+    const sub = document.getElementById('subgreeting');
+    sub.classList.add('visible');
+    setTimeout(() => {
+      typeText(sub, 'hope you hold onto this link forever', 55, () => {
+        setTimeout(() => document.getElementById('envWrap').classList.add('visible'), 380);
+      });
+    }, 300);
   });
 }, 500);
 </script>

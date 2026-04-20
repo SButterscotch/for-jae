@@ -23,28 +23,26 @@
     }
 
     body {
-      min-height: 100vh;
-      background: #fdf6ee;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      overflow: hidden;
-      position: relative;
-    }
+  min-height: 100vh;
+  background: #1a1008;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  position: relative;
+}
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 20%, rgba(255, 210, 180, .28) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 75%, rgba(255, 185, 200, .22) 0%, transparent 55%),
-        radial-gradient(ellipse at 55% 50%, rgba(255, 245, 230, .45) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(80,40,10,.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(60,20,10,.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 55% 50%, rgba(40,15,5,.3) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
 
     .petals {
       position: fixed;
@@ -93,7 +91,7 @@
     .greeting {
       font-size: clamp(2.6rem, 9vw, 5rem);
       font-weight: 400;
-      color: #6b3d2e;
+      color: #e8c9a0;;
       letter-spacing: .03em;
       min-height: 1.2em;
       text-align: center;
@@ -102,7 +100,7 @@
     .subgreeting {
       font-family: 'Caveat', cursive;
       font-size: clamp(1.1rem, 3vw, 1.4rem);
-      color: #b87a62;
+      color: #a07850;;
       text-align: center;
       min-height: 1.4em;
       opacity: 0;
@@ -525,10 +523,7 @@
     <div class="greeting" id="greeting"><span class="cursor"></span></div>
 
 
-    <div class="ttal-wrap" id="ttalWrap">
-      <div class="ttal-label" id="ttalLabel"></div>
-      <div class="ttal-cards" id="ttalCards"></div>
-    </div>
+    <div class="subgreeting" id="subgreeting"></div>
 
     <div class="env-wrap" id="envWrap">
       <div class="envelope" id="envelope" onclick="openEnvelope()">
@@ -536,9 +531,9 @@
         <div class="env-tri-left"></div>
         <div class="env-tri-right"></div>
         <div class="env-flap" id="flap"></div>
-        <div class="env-seal" id="seal">&#10084;</div>
+        <div class="env-seal" id="seal">🖤</div>
       </div>
-      <div class="open-label" id="openLabel">Open me</div>
+      <div class="open-label" id="openLabel">It almost felt real</div>
     </div>
   </div>
 
@@ -546,7 +541,7 @@
   <div class="letter-overlay" id="letterOverlay">
     <div class="letter-card">
       <button class="x-btn" onclick="closeEnvelope()">✕</button>
-      <div class="letter-icon">💌</div>
+      <div class="letter-icon">🖤</div>
       <div class="letter-text" id="letterText"><span class="cursor"></span></div>
       <div class="dots" id="dots"></div>
       <div class="letter-nav">
@@ -559,21 +554,7 @@
 
   <script>
     const sentences = [
-      "This might be the heaviest thing i've done yet, but please don't panic (@_@)",
-      "I know the pacing is scaring you, this has never happened to me before as well (;_;)",
-      "I don't know how to slow this down, and that might not be a bad thing you know (^_^)",
-      "Just so you know... I’d never hand code a whole website for anyone else",
-      "This is a one-time 'Sambhav Special' just for you (^o^)",
-      "I keep almost saying things and stopping myself, so I put it here instead",
-      "Somewhere between the long calls and seein your smile, I caught feelings",
-      "I'm sorry for only ever acting insecure about myself around you (-_-)",
-      "I wanted to surprise you with my dashing looks irl *_*",
-      "You're such an amazing person, truly a fucking gem <[]",
-      "I know the timing is weird, but I can't make it make sense either",
-      "I’m scared too, Jae.. just of different things than you are",
-      "I don't want to lose whatever this is by trying to define it",
-      "Just... don't disappear on me",
-      "Let's try to match each other's pace, and slowly figure things out together <3 —Sambhav"
+      "You were a beautiful season that lasted only a weekend. Thank you for the temporary joy; it was almost enough to make me forget the coming winter.",
     ];
 
     let current = 0, typeTO = null, isOpen = false;
@@ -679,23 +660,12 @@
 
     // greeting
     setTimeout(() => {
-  typeText(document.getElementById('greeting'), 'Hi Jae ♡', 90, () => {
-    const label = document.getElementById('ttalLabel');
-    document.getElementById('ttalWrap').classList.add('visible');
+  typeText(document.getElementById('greeting'), 'Hi Jae', 90, () => {
+    const sub = document.getElementById('subgreeting');
+    sub.classList.add('visible');
     setTimeout(() => {
-      typeText(label, '2 truths & a lie ✦', 45, () => {
-        const cards = document.getElementById('ttalCards');
-        cards.classList.add('hidden');
-        cards.innerHTML = `
-          <div class="ttal-card truth">I spent too much time making this</div>
-          <div class="ttal-card lie">I'm totally fine not talking to you</div>
-          <div class="ttal-card truth">Gato is deaf <'(o.o)'></div>
-        `;
-        setTimeout(() => {
-          cards.classList.remove('hidden');
-          cards.classList.add('fade-in');
-          setTimeout(() => document.getElementById('envWrap').classList.add('visible'), 1000);
-        }, 100);
+      typeText(sub, 'I am sorry for falling in love', 30, () => {
+        setTimeout(() => document.getElementById('envWrap').classList.add('visible'), 380);
       });
     }, 300);
   });
